@@ -10,6 +10,9 @@
     <style>
         body {
             background-color: #b9c4ad;
+            background-image: url(imgs/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         h1 {
@@ -133,21 +136,22 @@
             <article class="menu">
                 <h2></h2>
                 <img class="billede" src="" alt="">
-                <p class="beksrivelse"></p>
-
+                <p class="beskrivelse"></p>
             </article>
         </section>
     </main>
     <script>
         let urlParams = new URLSearchParams(window.location.search);
-        let tea = urlParams.get("tea");
+        let teaP = urlParams.get("teaP");
 
         document.addEventListener("DOMContentLoaded", getJson);
 
         async function getJson() {
             let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tbhCObUciWro7JgGaKq_sD4c-u0apzfOpmfLqdb50c/od6/public/values?alt=json");
             console.log("jsonData", jsonData);
+
             tea = await jsonData.json();
+
             console.log("tea", tea);
             document.querySelector(".luk").addEventListener("click", () => {
                 history.back()
@@ -158,10 +162,13 @@
         function start() {
 
             tea.feed.entry.forEach((tea) => {
-                if (tea.gsx$navn.$t == tea) {
+                if (tea.gsx$navn.$t == teaP) {
+
                     document.querySelector("h2").textContent = tea.gsx$navn.$t;
                     document.querySelector(".beskrivelse").textContent = tea.gsx$beskrivelse.$t;
                     document.querySelector(".billede").src = tea.gsx$billede.$t;
+                    document.querySelector(".billede").alt = tea.gsx$navn.$t;
+
                 }
             })
         }
