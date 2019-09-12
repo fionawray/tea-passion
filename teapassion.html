@@ -340,10 +340,10 @@
         <a id="kryds" class="closebtn">&times;</a>
         <a href="teapassion.html">Hjem</a>
         <a href="about.html">Om</a>
-        <a href="index.html">Hvid te</a>
-        <a href="about.html">Sort e</a>
-        <a href="green.html">Grøn te</a>
-        <a href="herbel.html">Urte te</a>
+        <a href="teapassion.html" class="filterLink" data-kategori="hvid te">Hvid te</a>
+        <a href="">Sort te</a>
+        <a href="">Grøn te</a>
+        <a href="">Urte te</a>
         <a href="accessories.html">Tilbehør</a>
         <a href="kontakt.html">Kontakt</a>
     </div>
@@ -446,6 +446,7 @@
             tea = await jsonData.json();
             console.log("tea", tea);
             addEventListenersToButtons();
+            addFilterEventListenersToLinks();
             start();
 
         }
@@ -477,6 +478,12 @@
             })
         }
 
+        function addFilterEventListenersToLinks() {
+            document.querySelectorAll(".filterLink").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
         function filtrering() {
             filter = this.dataset.kategori;
             document.querySelector("h1").textContent = this.textContent;
@@ -500,26 +507,51 @@
             document.querySelector("#menu").addEventListener("click", openNav)
         }
 
-        var slideIndex = 0;
-        showSlides();
 
-        function showSlides() {
+        let timer;
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            clearTimeout(timer);
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            clearTimeout(timer);
+            showSlides(slideIndex = n);
+        }
+
+        function showSlidesWrapper() {
+            showSlides(slideIndex++);
+        }
+
+        function showSlides(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1
             }
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
+
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
-            setTimeout(showSlides, 3300); // Change image every 3.3 seconds
+
+            timer = setTimeout(
+                showSlidesWrapper, 3300); // Change image every 3.3 seconds
         }
     </script>
 </body></html>
