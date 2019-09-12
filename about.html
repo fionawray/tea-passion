@@ -2,208 +2,71 @@
  <html>
 
  <head>
-    <title></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href="https://fonts.googleapis.com/css?family=Cormorant&display=swap" rel="stylesheet">
-    <style>
-        /* The side navigation menu */
-        .sidenav {
-            margin: 0px;
-            height: 100%;
-            width: 0;
-            /* 0 width - change this with JavaScript */
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #deded1;
-            overflow-x: hidden;
-            /* Disable horizontal scroll */
-            transition: 0.5s;
-            z-index: 3;
-            font-family: 'Cormorant', serif;
+     <title></title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <style>
+         * {
+             box-sizing: border-box;
+         }
 
-        }
+         body {
+             background-color: #efefef;
+         }
 
-        /* The navigation menu links */
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: white;
-            display: block;
-            transition: 0.3s;
-        }
+         .sectionwrapper_om {
+             display: flex;
+             flex-wrap: wrap;
+             flex-direction: row;
+         }
 
-        .sidenav a:hover {
-            color: #8E8E74;
-        }
-
-        button {
-            border: none;
-            background: none;
-
-        }
-
-        /* Position and style the close button (top right corner) */
-        .sidenav .closebtn {
-            font-size: 36px;
-            width: 85%;
-            text-align: right;
-            padding: 0px 30px 0px 20px;
-        }
-
-        #menu {
-            font-size: 30px;
-            margin: 0px;
-            text-align: end;
-            padding: 4px 25px 10px 0px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #efefef;
-        }
-
-        .sectionwrapper_om {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 100px;
-        }
+         h2 {
+             text-align: center;
+             margin-top: 100px;
+         }
 
 
-        .col {
-            flex-grow: 1;
-            flex-basis: 100px;
-            padding: 2vw;
-            text-align: left;
-            line-height: 26px;
-            margin-left: 20vw;
-        }
+         .col {
+             flex-grow: 1;
+             flex-basis: 100px;
+             padding: 2vw;
+             text-align: left;
+             line-height: 26px;
+             margin-left: 20vw;
+         }
 
-        #collage {
-            flex-grow: 1;
-            flex-basis: 200px;
-            padding: 2vw 2vw 2vw 0vw;
-        }
+         #collage {
+             flex-grow: 1;
+             flex-basis: 200px;
+             padding: 2vw 2vw 2vw 0vw;
+         }
 
-        #picture {
-            flex-grow: 2;
-            background-image: url(imgs/collage.png);
-            background-size: 100%;
-            height: 390px;
-            width: 390px;
-            border-radius: 1%;
-            margin-top: 1vw;
-        }
-    </style>
-</head>
+         #picture {
+             flex-grow: 2;
+             background-image: url(imgs/collage.png);
+             background-size: 100%;
+             height: 390px;
+             width: 390px;
+             border-radius: 1%;
+             margin-top: 1vw;
+         }
 
-<body>
-    <div id="mySidenav" class="sidenav">
-        <a id="kryds" class="closebtn">&times;</a>
-        <a href="teapassion.html">Hjem</a>
-        <a href="about.html">Om</a>
-        <a href="index.html">Hvid te</a>
-        <a href="about.html">Sort e</a>
-        <a href="green.html">Grøn te</a>
-        <a href="herbel.html">Urte te</a>
-        <a href="accessories.html">Tilbehør</a>
-        <a href="kontakt.html">Kontakt</a>
-    </div>
+     </style>
+ </head>
 
-    <div id="header">
-        <div id="logo">
-            <div id="container_logo"></div>
-        </div>
-        <div class="menu">
-            <p id="menu">&#9776;</p>
-        </div>
-    </div>
-    <h2>About us</h2>
-    <div class="sectionwrapper_om">
-        <div class="col">
+ <body>
 
-            <p>Information about us and what we stand for <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis officiis, saepe, illum cum consectetur quidem doloremque repellat laudantium totam nam vero, harum nostrum nemo repudiandae provident, recusandae nobis pariatur dicta.</p>
-        </div>
-        <div id="collage">
-            <div id="picture"></div>
-        </div>
-    </div>
-    <script>
-        let tea;
-        const theTemplatePointer = document.querySelector("#theTemplate");
-        let filter = "alle";
-        document.addEventListener("DOMContentLoaded", getJson);
+     <h2>About us</h2>
+     <div class="sectionwrapper_om">
+         <div class="col">
 
-        async function getJson() {
-            let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tbhCObUciWro7JgGaKq_sD4c-u0apzfOpmfLqdb50c/od6/public/values?alt=json");
-            console.log("jsonData", jsonData);
-            tea = await jsonData.json();
-            console.log("tea", tea);
-            addEventListenersToButtons();
-            start();
+             <p>Information about us and what we stand for <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis officiis, saepe, illum cum consectetur quidem doloremque repellat laudantium totam nam vero, harum nostrum nemo repudiandae provident, recusandae nobis pariatur dicta.</p>
+         </div>
+         <div id="collage">
+             <div id="picture"></div>
+         </div>
+     </div>
+ </body>
 
-        }
-
-        function start() {
-            const listeTea = document.querySelector(".liste");
-            const temp = document.querySelector("template");
-
-            document.querySelector("#menu").addEventListener("click", openNav);
-
-            listeTea.innerHTML = "";
-            tea.feed.entry.forEach((tea) => {
-                if (filter == "alle" || filter == tea.gsx$kategori.$t) {
-                    const klon = temp.cloneNode(true).content;
-                    klon.querySelector("h2").textContent = tea.gsx$navn.$t;
-                    //                    klon.querySelector(".beskrivelse").textContent = tea.gsx$beskrivelse.$t;
-                    klon.querySelector("img").src = tea.gsx$billede.$t;
-                    listeTea.appendChild(klon);
-                    listeTea.lastElementChild.addEventListener("click", () => {
-                        location.href = `teapassion-singleview.html?teaP=${tea.gsx$navn.$t}`;
-                    });
-                }
-            })
-        }
-
-        function addEventListenersToButtons() {
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
-            })
-        }
-
-        function filtrering() {
-            filter = this.dataset.kategori;
-            document.querySelector("h1").textContent = this.textContent;
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.classList.remove("valgt");
-
-            })
-            start();
-        }
-
-        /* Set the width of the side navigation to 250px */
-        function openNav() {
-            console.log("yo");
-            document.querySelector("#mySidenav").style.width = "250px";
-            document.querySelector("#kryds").addEventListener("click", closeNav)
-        }
-
-        /* Set the width of the side navigation to 0 */
-        function closeNav() {
-            document.querySelector("#mySidenav").style.width = "0";
-            document.querySelector("#menu").addEventListener("click", openNav)
-        }
-    </script>
-</body></html>
+ </html>
