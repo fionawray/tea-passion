@@ -67,6 +67,12 @@
             color: #8E8E74;
         }
 
+        button {
+            border: none;
+            background: none;
+
+        }
+
         /* Position and style the close button (top right corner) */
         .sidenav .closebtn {
             font-size: 36px;
@@ -101,7 +107,12 @@
 
         }
 
-        .filter {
+
+        hr {
+            width: 80%;
+        }
+
+        /* .filter {
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -110,17 +121,28 @@
             border: none;
             font-size: 16px;
             margin: 17px;
+        }*/
+        .filter {
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            color: #777;
+            text-align: center;
+            letter-spacing: 1.5px;
+            margin: 17px;
+            /*font-family: 'Roboto', sans-serif; */
         }
 
-        .filter:hover {
-            background-color: #e2e8e5;
+        nav .filter:hover {
+            transition: 0.5s;
+            text-decoration: underline;
+            color: black;
         }
 
         img {
             width: 80%;
             margin: 20px;
             border: 3px solid #ebebeb;
-
         }
 
 
@@ -179,6 +201,7 @@
                 display: block;
             }
         }
+
     </style>
 </head>
 
@@ -207,7 +230,7 @@
         </div>
     </div>
 
-
+    <hr>
     <nav>
         <button class="filter valgt" data-kategori="alle">ALLE</button>
         <button class="filter" data-kategori="hvid te">HVID TE</button>
@@ -216,6 +239,7 @@
         <button class="filter" data-kategori="urte te">URTE TE</button>
         <button class="filter" data-kategori="tilbehør">TILBEHØR</button>
     </nav>
+    <hr>
 
     <h1>Sortiment</h1>
     <template>
@@ -304,5 +328,8 @@
             document.querySelector("#mySidenav").style.width = "0";
             document.querySelector("#menu").addEventListener("click", openNav)
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

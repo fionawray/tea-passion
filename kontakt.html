@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon-32x32.png">
+    <title>Kontakt</title>
+    <style>
+        #contact {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #home_kontakt {
+            display: block;
+            align-content: center;
+        }
+
+        .kontakt-content {
+            position: absolute;
+            text-align: center;
+            min-width: 300px;
+            left: 50%;
+            top: 20%;
+            padding: 65px;
+            outline-offset: 8px;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .txt_kontakt {
+            flex-grow: 1;
+            flex-basis: 200px;
+            padding: 2vw;
+            text-align: left;
+            line-height: 26px;
+            margin-left: 13vw;
+        }
+
+        .col_kontakt {
+            display: flex;
+            margin: 6vw;
+            flex-wrap: wrap;
+        }
+
+        .container_kontakt {
+            border-radius: 5px;
+            background-color: #e2e2e2;
+            background-image: url(imgs/te.jpg);
+            padding: 20px;
+            margin-top: 3vw;
+            margin-right: 10vw;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            flex-basis: 400px;
+        }
+
+        form {
+            display: block;
+            margin-top: 0em;
+        }
+
+        input[type=text],
+        select,
+        textarea {
+            font-family: 'abel', sans-serif;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #8b9d9d;
+            color: rgb(255, 255, 255);
+            padding: 10px 25px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="contact">
+        <div class="col_kontakt">
+
+            <div class="txt_kontakt">
+
+                <h2>Kontakt</h2>
+                <p>Kontakt os via formularen <br>
+                    eller skriv en e-mail direkte til os på <br>
+                    teapassion@hotmail.com</p>
+                <h2>København</h2>
+                <p>
+                    Tea Passion <br>
+                    2100, København <br>
+                    Danmark <br>
+
+                    +45 29 37 46 15</p>
+            </div>
+
+            <div class="container_kontakt">
+                <form action="mailto:fiona.maria.wray@hotmail.com" method="post" enctype="text/plain">
+
+                    <input type="text" id="name" name="firstname" placeholder="Name">
+
+                    <input type="text" id="email" name="email" placeholder="Email">
+
+                    <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
+
+                    <input type="submit" value="Send">
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+</body></html>

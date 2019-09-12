@@ -1,0 +1,69 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #efefef;
+        }
+
+        .sectionwrapper_om {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+
+        .col {
+            flex-grow: 1;
+            flex-basis: 100px;
+            padding: 2vw;
+            text-align: left;
+            line-height: 26px;
+            margin-left: 20vw;
+        }
+
+        #collage {
+            flex-grow: 1;
+            flex-basis: 200px;
+            padding: 2vw 2vw 2vw 0vw;
+        }
+
+        #picture {
+            flex-grow: 2;
+            background-image: url(imgs/collage.png);
+            background-size: 100%;
+            height: 390px;
+            width: 390px;
+            border-radius: 1%;
+            margin-top: 1vw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>About us</h2>
+    <div class="sectionwrapper_om">
+        <div class="col">
+
+            <p>Information about us and what we stand for <br><br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis officiis, saepe, illum cum consectetur quidem doloremque repellat laudantium totam nam vero, harum nostrum nemo repudiandae provident, recusandae nobis pariatur dicta.</p>
+        </div>
+        <div id="collage">
+            <div id="picture"></div>
+        </div>
+    </div>
+</body></html>
