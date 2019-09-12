@@ -12,7 +12,6 @@
     <style>
         body {
             background-color: #f5f5f5;
-            width: 100%;
         }
 
         * {
@@ -43,7 +42,7 @@
             color: white;
             font-weight: bold;
             font-size: 18px;
-            transition: 0.6s ease;
+            transition: 0.8s ease;
             border-radius: 0 3px 3px 0;
             user-select: none;
         }
@@ -117,32 +116,6 @@
                 opacity: 1
             }
         }
-
-        /*
-        #splash {
-            width: 100vw;
-            height: 100vw;
-            background-image: url(imgs/Artboard%201.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        @media only screen and (min-width: 500px) {
-            #splash {
-                width: 100vw;
-                height: 36.25vw;
-                background-position: 40% 50%;
-            }
-        }
-
-        @media only screen and (max-width: 500px) {
-            #spalsh {
-                width: 100vw;
-                height: 86.25vw;
-                background-position: 50% 50%;
-            }
-        }
-*/
 
         /* The side navigation menu */
         .sidenav {
@@ -372,7 +345,6 @@
             <p id="menu">&#9776;</p>
         </div>
     </div>
-    <!--    <section id="splash"></section>-->
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
@@ -389,6 +361,10 @@
             <img src="imgs/spoon.png" style="width:100%">
         </div>
 
+        <div class="mySlides fade">
+            <img src="imgs/Artboard%201.png" style="width:100%">
+        </div>
+
         <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -400,6 +376,7 @@
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
     </div>
 
     <hr>
