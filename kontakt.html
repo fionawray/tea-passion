@@ -207,7 +207,6 @@
         .copyright {
             font-size: 10px;
         }
-
     </style>
 </head>
 
@@ -217,16 +216,13 @@
         <a id="kryds" class="closebtn">&times;</a>
         <a href="teapassion.html">Hjem</a>
         <a href="about.html">Om</a>
-        <a href="index.html">Hvid te</a>
-        <a href="about.html">Sort e</a>
-        <a href="green.html">Grøn te</a>
-        <a href="herbel.html">Urte te</a>
-        <a href="accessories.html">Tilbehør</a>
+        <a class="filterLink" data-kategori="hvid te">Hvid te</a>
+        <a class="filterLink" data-kategori="sort te">Sort te</a>
+        <a class="filterLink" data-kategori="grøn te ">Grøn te</a>
+        <a class="filterLink" data-kategori="urte te">Urte te</a>
+        <a class="filterLink" data-kategori="tilbehør">Tilbehør</a>
         <a href="kontakt.html">Kontakt</a>
-
-
     </div>
-
 
     <div id="header">
         <div id="logo">
@@ -311,6 +307,7 @@
             tea = await jsonData.json();
             console.log("tea", tea);
             addEventListenersToButtons();
+            addFilterEventListenersToLinks();
             start();
 
         }
@@ -342,6 +339,13 @@
             })
         }
 
+        function addFilterEventListenersToLinks() {
+            document.querySelectorAll(".filterLink").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+        }
+
+
         function filtrering() {
             filter = this.dataset.kategori;
             document.querySelector("h1").textContent = this.textContent;
@@ -364,8 +368,5 @@
             document.querySelector("#mySidenav").style.width = "0";
             document.querySelector("#menu").addEventListener("click", openNav)
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
