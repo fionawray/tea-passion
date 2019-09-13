@@ -20,7 +20,7 @@
             z-index: 1;
             top: 0;
             right: 0;
-            background-color: #deded1;
+            background-color: rgba(159, 197, 206, 0.91);
             overflow-x: hidden;
             /* Disable horizontal scroll */
             transition: 0.5s;
@@ -83,6 +83,7 @@
             margin-top: 100px;
             font-family: 'Cormorant', serif;
             text-transform: uppercase;
+            font-size: 2em;
         }
 
 
@@ -110,6 +111,8 @@
             border-radius: 1%;
             margin-top: 1vw;
         }
+
+
 
         /*Footer*/
 
@@ -141,6 +144,50 @@
 
         .copyright {
             font-size: 10px;
+        }
+
+
+        .row {
+            display: -ms-flexbox;
+            /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap;
+            /* IE10 */
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create four equal columns that sits next to each other */
+        .column {
+            -ms-flex: 25%;
+            /* IE10 */
+            flex: 25%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        /* Responsive layout - makes a two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                -ms-flex: 50%;
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                -ms-flex: 100%;
+                flex: 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -179,6 +226,39 @@
             <div id="picture"></div>
         </div>
     </div>
+
+    <!-- Photo Grid -->
+    <div class="row">
+        <div class="column">
+            <img src="/imgs/Moroccan-mint-tea-12012016.jpg" style="width:100%">
+            <img src="/imgs/billede2.png" style="width:100%">
+            <img src="/imgs/Artboard%201.png" style="width:100%">
+            <img src="/imgs/billede3.png" style="width:100%">
+            <img src="/imgs/4.jpg" style="width:100%">
+
+        </div>
+        <div class="column">
+            <img src="/imgs/3.jpg" style="width:100%">
+            <img src="/imgs/te.jpg" style="width:100%">
+            <img src="/imgs/1.jpg" style="width:100%">
+
+        </div>
+        <div class="column">
+            <img src="/imgs/4488990_orig.jpg" style="width:100%">
+            <img src="/imgs/2.jpg" style="width:100%">
+            <img src="/imgs/matcha.jpg" style="width:100%">
+            <img src="/imgs/6.jpg" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="/imgs/start.jpg" style="width:100%">
+            <img src="imgs/bg.jpg" style="width:100%">
+
+            <img src="/imgs/prove.png" style="width:100%">
+            <img src="/imgs/5.jpg" style="width:100%">
+
+        </div>
+    </div>
+
 
     <script>
         let tea;
