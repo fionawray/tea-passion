@@ -348,6 +348,7 @@
         .copyright {
             font-size: 10px;
         }
+
     </style>
 </head>
 
@@ -357,9 +358,9 @@
         <a id="kryds" class="closebtn">&times;</a>
         <a href="teapassion.html">Hjem</a>
         <a href="about.html">Om</a>
-        <a href="teapassion.html" class="filterLink" data-kategori="hvid te">Hvid te</a>
+        <a class="filterLink" data-kategori="hvid te">Hvid te</a>
         <a class="filterLink" data-kategori="sort te">Sort te</a>
-        <a class="filterLink" data-kategori="grøn te ">Grøn te</a>
+        <a class="filterLink" data-kategori="grøn te">Grøn te</a>
         <a class="filterLink" data-kategori="urte te">Urte te</a>
         <a class="filterLink" data-kategori="tilbehør">Tilbehør</a>
         <a href="kontakt.html" class="filterLink" data-kategori="tilbehør">Kontakt</a>
@@ -412,16 +413,16 @@
 
     <hr>
     <nav>
-        <button class="filter valgt" data-kategori="alle">ALLE</button>
+        <button class="filter" data-kategori="alle">ALLE</button>
         <button class="filter" data-kategori="hvid te">HVID TE</button>
         <button class="filter" data-kategori="sort te">SORT TE</button>
-        <button class="filter" data-kategori="grøn te ">GRØN TE</button>
+        <button class="filter" data-kategori="grøn te">GRØN TE</button>
         <button class="filter" data-kategori="urte te">URTE TE</button>
         <button class="filter" data-kategori="tilbehør">TILBEHØR</button>
     </nav>
     <hr>
 
-    <h1>Sortiment</h1>
+    <h1></h1>
     <template>
         <article>
             <h2></h2>
@@ -456,32 +457,45 @@
     <script>
         let tea;
         const theTemplatePointer = document.querySelector("#theTemplate");
-        let filter = "alle";
+        // Vigtigste variabel, der filtrer mellem vores tea types
+        let filter;
+        let urlParams = new URLSearchParams(window.location.search);
+        //der er tilføjet en ny urlParams, der giver mulighed for at sætte en tea type ind
+        let teaType = urlParams.get("teaType");
+        console.log(teaType);
+
         document.addEventListener("DOMContentLoaded", getJson);
+
+        document.querySelector("#menu").addEventListener("click", openNav);
 
         async function getJson() {
             let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tbhCObUciWro7JgGaKq_sD4c-u0apzfOpmfLqdb50c/od6/public/values?alt=json");
             console.log("jsonData", jsonData);
             tea = await jsonData.json();
             console.log("tea", tea);
+
             addEventListenersToButtons();
             addFilterEventListenersToLinks();
-            start();
 
+            //hvis tea type er sat, så kører den en filtreinger på baggrund af den tea type
+            //hvis tea type ikke er sat, så kører den en filtrering med alle
+
+            if (teaType != null) {
+                filtrering(teaType)
+            } else {
+                filtrering("alle")
+            }
         }
 
-        function start() {
+        function addingDataToListe() {
             const listeTea = document.querySelector(".liste");
             const temp = document.querySelector("template");
-
-            document.querySelector("#menu").addEventListener("click", openNav);
 
             listeTea.innerHTML = "";
             tea.feed.entry.forEach((tea) => {
                 if (filter == "alle" || filter == tea.gsx$kategori.$t) {
                     const klon = temp.cloneNode(true).content;
                     klon.querySelector("h2").textContent = tea.gsx$navn.$t;
-                    //                    klon.querySelector(".beskrivelse").textContent = tea.gsx$beskrivelse.$t;
                     klon.querySelector("img").src = tea.gsx$billede.$t;
                     listeTea.appendChild(klon);
                     listeTea.lastElementChild.addEventListener("click", () => {
@@ -490,27 +504,30 @@
                 }
             })
         }
-
+        // Tilføjer eventlisteners til button menuen, når disse bliver klikket på bliver filtrering kaldt med knappens data-kategori som et input argument
         function addEventListenersToButtons() {
             document.querySelectorAll(".filter").forEach(elm => {
-                elm.addEventListener("click", filtrering);
+                elm.addEventListener("click", () => {
+                    filtrering(elm.dataset.kategori)
+                });
             })
         }
 
         function addFilterEventListenersToLinks() {
             document.querySelectorAll(".filterLink").forEach(elm => {
-                elm.addEventListener("click", filtrering);
+                elm.addEventListener("click", () => {
+                    filtrering(elm.dataset.kategori)
+                });
             })
         }
+        // filtrering tager et filter/data-kategori som input. Sætter filter variablen lig dette input.
+        // på baggrund af dette filter bliver addingDataToListe kaldt, som er den funktion, der sørger for at vise de forskellige produkter baseret på det valgte filter
+        function filtrering(tempFilter) {
+            console.log(tempFilter);
+            filter = tempFilter;
+            document.querySelector("h1").textContent = filter;
 
-        function filtrering() {
-            filter = this.dataset.kategori;
-            document.querySelector("h1").textContent = this.textContent;
-            document.querySelectorAll(".filter").forEach(elm => {
-                elm.classList.remove("valgt");
-
-            })
-            start();
+            addingDataToListe();
         }
 
         /* Set the width of the side navigation to 250px */
@@ -528,7 +545,7 @@
 
 
         let timer;
-        var slideIndex = 1;
+        let slideIndex = 1;
         showSlides(slideIndex);
 
         // Next/previous controls
@@ -548,9 +565,9 @@
         }
 
         function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("dot");
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
 
             if (n > slides.length) {
                 slideIndex = 1
@@ -572,5 +589,8 @@
             timer = setTimeout(
                 showSlidesWrapper, 3300); // Change image every 3.3 seconds
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
