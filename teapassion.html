@@ -22,6 +22,9 @@
             justify-content: space-between;
         }
 
+        #kryds {
+            cursor: pointer;
+        }
 
         /*Logo*/
         #container_logo {
@@ -33,6 +36,7 @@
             padding: 1rem;
             margin-left: 1.2rem;
             margin-top: 0.3rem;
+            cursor: pointer;
         }
 
         * {
@@ -184,6 +188,7 @@
             width: 85%;
             text-align: right;
             padding: 0px 0px 0px 20px;
+            cursor: pointer;
         }
 
         #menu {
@@ -191,6 +196,7 @@
             margin: 0px;
             text-align: end;
             padding: 25px 25px 0px 0px;
+            cursor: pointer;
         }
 
 
@@ -224,6 +230,11 @@
 
             nav {
                 display: block;
+            }
+
+            article {
+                margin-left: 20px;
+                margin-right: 20px;
             }
         }
 
@@ -271,22 +282,27 @@
             grid-template-columns: repeat(1, 1fr);
             max-width: 1080px;
             margin: 0 auto;
-
+            cursor: pointer;
         }
+
+
 
         article:nth-child(even) {
             background-color: rgba(199, 209, 211, 0.72);
+            padding-bottom: 20px;
 
         }
 
         article:nth-child(odd) {
             background-color: rgba(199, 209, 211, 0.72);
+            padding-bottom: 20px;
         }
 
         @media screen and (min-width:600px) {
             .liste {
                 grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
         @media screen and (min-width:960px) {
@@ -347,6 +363,10 @@
 
         .copyright {
             font-size: 10px;
+        }
+
+        .filterLink {
+            cursor: pointer;
         }
     </style>
 </head>
