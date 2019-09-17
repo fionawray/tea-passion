@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Passion</title>
+    <link href="https://fonts.googleapis.com/css?family=Cormorant&display=swap" rel="stylesheet">
+    <!--Icons-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        /*Logo*/
+        #container_logo {
+            width: 200px;
+            height: 90px;
+            background-image: url(imgs/tea_logo1.svg);
+            background-position: top;
+            background-size: 100%;
+            padding: 1rem;
+            margin-left: 1.2rem;
+            margin-top: 0.3rem;
+            cursor: pointer;
+        }
+
+        /*
+        @media only screen and (min-width: 500px) {
+        body {
+        width: 100%;
+        height: 100vh;
+        background-position: 40% 40%;
+
+        }
+        }
+
+        @media only screen and (max-width: 500px) {
+        body {
+        width: 100%;
+        height: 100vh;
+        background-position: 53.3% 50%;
+        }
+*/
+
+        /*About*/
+
+        .about img {
+            float: right;
+
+        }
+
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #F6F6F6;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .col_pic {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 400px;
+            margin: 1rem;
+            padding-left: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            background-image: url(imgs/green-mint-leaves-tea-cup-with-teapot-isolated-white-backdrop_23-2148091959.jpg);
+        }
+
+        .about .col {
+            min-height: 60vh;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 400px;
+            background-color: rgba(199, 209, 211, 0.72);
+            margin: 1rem;
+            padding: 2rem;
+            font-size: 1.3rem;
+        }
+
+        .about p {
+            line-height: 2.2rem;
+            margin: 1.5rem;
+        }
+
+        .luk {
+            position: absolute;
+            right: 35px;
+            top: 35px;
+            font-size: 2rem;
+            font-family: 'Lato', sans-serif;
+            border: none;
+            color: black;
+            background-color: none;
+        }
+
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            color: #0a0a0a;
+            font-family: 'Cormorant', serif;
+            font-weight: 300;
+        }
+
+        article:nth-child(even) {
+            background-color: #e5e4e0;
+        }
+
+        article:nth-child(odd) {
+            background-color: #e5e4e0;
+        }
+
+        /*Footer*/
+
+        .footer {
+            text-align: center;
+            position: sticky;
+            font-family: 'Poppins', sans-serif;
+            color: #67674f;
+        }
+
+        .media_wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .item {
+            font-size: 25px;
+            margin: 1rem 1rem 0rem 1rem;
+            color: #67674f;
+        }
+
+        .fa {
+            width: 50px;
+        }
+
+        a {
+            color: #67674f;
+        }
+
+        .copyright {
+            font-size: 10px;
+        }
+
+        .filterLink {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="header">
+        <a href="teapassion.html">
+            <div id="logo">
+                <div id="container_logo"></div>
+            </div>
+        </a>
+    </div>
+
+    <main id="single">
+        <button class="luk">X</button>
+        <div class="about">
+            <div class="col_pic">
+                <img class="billede" src="" alt="">
+            </div>
+            <div class="col" id="text_col">
+                <h2></h2>
+                <p class="beskrivelse"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="media_wrapper">
+            <a href="">
+                <div class="item">
+                    <i class="fa fa-facebook"></i>
+                </div>
+            </a>
+            <a href="">
+                <div class="item">
+                    <i class="fa fa-instagram"></i>
+                </div>
+            </a>
+            <a href="contact.html">
+                <div class="item">
+                    <a href="kontakt.html"> <i class="fa fa-envelope"></i></a>
+                </div>
+            </a>
+        </div>
+        <div class="copyright">
+            <p>&#169; Copyright 2019 - All Rights Reserved &#10072; Designed by Tea Passion</p>
+        </div>
+    </footer>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let teaP = urlParams.get("teaP");
+
+        document.addEventListener("DOMContentLoaded", getJson);
+
+        async function getJson() {
+            let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tbhCObUciWro7JgGaKq_sD4c-u0apzfOpmfLqdb50c/od6/public/values?alt=json");
+            console.log("jsonData", jsonData);
+
+            tea = await jsonData.json();
+
+            console.log("tea", tea);
+            document.querySelector(".luk").addEventListener("click", () => {
+                history.back()
+            });
+            start();
+        }
+
+        function start() {
+
+            tea.feed.entry.forEach((tea) => {
+                if (tea.gsx$navn.$t == teaP) {
+
+                    document.querySelector("h2").textContent = tea.gsx$navn.$t;
+                    document.querySelector(".beskrivelse").textContent = tea.gsx$beskrivelse.$t;
+                    document.querySelector(".billede").src = tea.gsx$billede.$t;
+                    document.querySelector(".billede").alt = tea.gsx$navn.$t;
+
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

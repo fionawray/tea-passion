@@ -18,6 +18,7 @@
         }
 
         #header {
+            /* tilføjer display flex, så der er plads til både menu og logo */
             display: flex;
             justify-content: space-between;
         }
@@ -39,6 +40,7 @@
             cursor: pointer;
         }
 
+        /* Slide show box */
         * {
             box-sizing: border-box;
         }
@@ -84,19 +86,6 @@
         .next:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
-
-        /* Caption text */
-        /*
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
-*/
 
         /* The dots/bullets/indicators */
         .dot {
@@ -238,18 +227,6 @@
             }
         }
 
-        /*
-         .filter {
-         font-family: 'Roboto', sans-serif;
-         text-transform: uppercase;
-         letter-spacing: 1.5px;
-         color: white;
-         background-color: #b9c4ad;
-         border: none;
-         font-size: 16px;
-         margin: 17px;
-         }
-*/
         .filter {
             border-radius: 8px;
             font-size: 17px;
@@ -311,21 +288,6 @@
             }
         }
 
-        #info {
-            display: flex;
-            justify-content: center;
-            background-color: #b9c4ad;
-            margin: 10px;
-
-        }
-
-        #info p {
-            margin: 30px;
-            font-family: 'Roboto', sans-serif;
-            color: #5c5c5c;
-        }
-
-
         @media only screen and (min-width: 600px) {
             nav {
                 display: block;
@@ -338,10 +300,12 @@
         .footer {
             text-align: center;
             position: sticky;
+            /* Footer forbliver i bunden af siden */
             font-family: 'Poppins', sans-serif;
             color: #67674f;
         }
 
+        /* Flexbox */
         .media_wrapper {
             display: flex;
             justify-content: center;
@@ -368,15 +332,18 @@
         .filterLink {
             cursor: pointer;
         }
+
     </style>
 </head>
 
 <body>
 
+    <!-- Bugermenuen -->
     <div id="mySidenav" class="sidenav">
         <a id="kryds" class="closebtn">&times;</a>
         <a href="teapassion.html">Hjem</a>
         <a href="about.html">Om</a>
+        <!-- Vores primær menu -->
         <a class="filterLink" data-kategori="hvid te">Hvid te</a>
         <a class="filterLink" data-kategori="sort te">Sort te</a>
         <a class="filterLink" data-kategori="grøn te">Grøn te</a>
@@ -399,7 +366,7 @@
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
-        <!-- Full-width images with number and caption text -->
+        <!-- Full-width images -->
         <div class="mySlides fade">
             <img src="imgs/Moroccan-mint-tea-12012016.jpg" style="width:100%">
         </div>
@@ -608,5 +575,8 @@
             timer = setTimeout(
                 showSlidesWrapper, 3300); // Change image every 3.3 seconds
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
