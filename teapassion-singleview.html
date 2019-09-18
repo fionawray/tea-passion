@@ -13,9 +13,7 @@
         body {
             background-color: #f5f5f5;
             margin: 0;
-
         }
-
 
         #single {
             display: flex;
@@ -42,26 +40,19 @@
             width: 0;
             /* 0 width - change this with JavaScript */
             position: fixed;
+            /* gør at menuen er placeret i højre side vha. height, top og right parameterne */
             z-index: 1;
+            /* placerer sig ovenover over andre elementer */
             top: 0;
             right: 0;
             background-color: rgba(159, 197, 206, 0.91);
             overflow-x: hidden;
             /* Disable horizontal scroll */
             transition: 0.5s;
-            z-index: 3;
+            /* transition, når menuen klapper sig sammen og åbner */
             font-family: 'Cormorant', serif;
 
         }
-
-        /*
-        #menu {
-            font-size: 40px;
-            margin: 0px;
-            text-align: end;
-            padding: 25px 25px 0px 0px;
-            cursor: pointer;
-        }*/
 
         /* The navigation menu links */
         .sidenav a {
@@ -70,6 +61,7 @@
             font-size: 25px;
             color: white;
             display: block;
+            /* specificerer et blok element */
             transition: 0.3s;
         }
 
@@ -136,7 +128,7 @@
 
         img {
             width: 80%;
-            margin: 20px;
+            /*            margin: 20px;*/
         }
 
         .beskrivelse {
@@ -258,21 +250,21 @@
 
         #statestics {
             background-image: url(imgs/statistics.png);
-            background-size: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
             height: 170px;
             width: 700px;
-            align-content: center;
-            margin-right: 0px;
-        }
-
-        /*
-        #statestics {
-            display: block;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
+<<<<<<< HEAD
             width: 50%;
         }*/
 
+=======
+
+        }
+>>>>>>> origin/master
     </style>
 </head>
 
