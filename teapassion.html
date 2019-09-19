@@ -330,7 +330,6 @@
         .filterLink {
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -350,7 +349,7 @@
         <a href="kontakt.html" class="filterLink" data-kategori="tilbehør">Kontakt</a>
     </div>
 
-
+    <!-- I vores header er vores logo og vores burgermenu -->
     <div id="header">
         <div id="logo">
             <div id="container_logo">
@@ -361,6 +360,9 @@
             <p id="menu">&#9776;</p>
         </div>
     </div>
+
+    <!-- slideshow inspo fra W3School -->
+
     <!-- Slideshow container -->
     <div class="slideshow-container">
 
@@ -382,17 +384,17 @@
         </div>
 
         <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
     </div>
     <br>
 
-    <!-- The dots/circles -->
+    <!-- The dots -->
     <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
 
     <hr>
@@ -448,9 +450,22 @@
         let teaType = urlParams.get("teaType");
         console.log(teaType);
 
-        document.addEventListener("DOMContentLoaded", getJson);
+        //start på slideshow
+        let timer; // set timeout variablen
+        let slideIndex = 1; //slideshow nummer
 
-        document.querySelector("#menu").addEventListener("click", openNav);
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            getJson();
+            addEventListenersToButtons();
+            addFilterEventListenersToLinks();
+
+            addEventListenersToSlideShow();
+            showSlides(slideIndex); //starter slideshowet ved at kalde showslides for slideindex=1
+
+            document.querySelector("#menu").addEventListener("click", openNav);
+        }
 
         async function getJson() {
             let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/14tbhCObUciWro7JgGaKq_sD4c-u0apzfOpmfLqdb50c/od6/public/values?alt=json");
@@ -458,8 +473,7 @@
             tea = await jsonData.json();
             console.log("tea", tea);
 
-            addEventListenersToButtons();
-            addFilterEventListenersToLinks();
+
 
             //hvis tea type er sat, så kører den en filtreinger på baggrund af den tea type
             //hvis tea type ikke er sat, så kører den en filtrering med alle
@@ -528,10 +542,15 @@
             document.querySelector("#menu").addEventListener("click", openNav)
         }
 
-        //start på slideshow
-        let timer; // set timeout variablen
-        let slideIndex = 1; //slideshow nummer
-        showSlides(slideIndex); //starter slideshowet ved at kalde showslides for slideindex=1
+        function addEventListenersToSlideShow() {
+            document.querySelector(".prev").addEventListener("click", () => plusSlides(-1));
+            document.querySelector(".next").addEventListener("click", () => plusSlides(1));
+
+            document.querySelectorAll(".dot")[0].addEventListener("click", () => currentSlide(1));
+            document.querySelectorAll(".dot")[1].addEventListener("click", () => currentSlide(2));
+            document.querySelectorAll(".dot")[2].addEventListener("click", () => currentSlide(3));
+            document.querySelectorAll(".dot")[3].addEventListener("click", () => currentSlide(4));
+        }
 
         // denne funkction bliver kaldt af left og right slide funktionalitten. Enten øges slideIndex med 1 eller oggås reduceres den med 1
         function plusSlides(n) {
@@ -586,8 +605,5 @@
             timer = setTimeout(
                 showSlidesWrapper, 3300); // Change image every 3.3 seconds
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
